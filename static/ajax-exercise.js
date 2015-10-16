@@ -22,9 +22,15 @@ function displayFortune(fortune) {
 function showWeather(evt) {
     evt.preventDefault();
 
-    var url = "/weather?zipcode=" + $("#zipcode-field").val();
+    var url = "/weather.json?zipcode=" + $("#zipcode-field").val();
 
     // TODO: request weather with that URL and show the forecast in #weather-info
+    $.get(url, displayForecast);
+}
+
+function displayForecast(results) {
+    var forecast = results["forecast"];
+    alert(forecast);
 }
 
 $("#weather-form").on('submit', showWeather);
