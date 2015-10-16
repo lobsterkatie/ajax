@@ -59,5 +59,13 @@ function displayOrderMessage(results) {
     var code = results['code'];
     var message = results['msg'];
 
+    //in case the previous submission had an error, take that styling off
+    $("#order-status").removeClass("order-error");
+
+    //if the request triggered an error, style the message appropirately
+    if (code === "ERROR") {
+        $('#order-status').addClass("order-error");
+    }
     $('#order-status').html(code + " : " + message);
+
 }
